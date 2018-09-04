@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,7 +20,8 @@ public class Main {
             boolean userLost = true;
 
             for (int i = 0; i < 3; i++) {
-                int userNum = scan.nextInt();
+                int userNum = askNUM();
+
                 if (myNum > userNum) {
                     System.out.println("your number is less");
                 } else if (myNum < userNum) {
@@ -55,4 +57,28 @@ public class Main {
 
         return answer;
     }
+
+
+    static int askNUM() {
+        int answer;
+        do {
+            try {
+                answer = scan.nextInt();
+            } catch (InputMismatchException e) { // e - is variable
+                System.out.println("This is not number");
+                scan.next();
+                continue;
+            }
+            if (answer > 100 || answer < 1) {
+                System.out.println("you  enter incorrect number!");
+                scan.next();
+                continue; // here it is not obligatory
+            } else {
+                break;
+            }
+        } while (true); // endless cycle
+
+        return answer;
+    }
 }
+
