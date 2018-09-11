@@ -37,6 +37,7 @@ public class Main {
                     Gameresult r = new Gameresult();
                     r.name=name;
                     r.triesCount = i+1;
+                    r.duration = duration;
                     results.add(r);
 
                     break;
@@ -64,7 +65,7 @@ public class Main {
 
     private static void showResults() {
         for(Gameresult r: results){
-            System.out.println(r.name + "-->" + r.triesCount);
+            System.out.println(r.name + "-->" + r.triesCount + "-->" + r.duration);
         }
     }
 
